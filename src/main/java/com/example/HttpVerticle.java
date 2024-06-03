@@ -22,7 +22,7 @@ public class HttpVerticle extends AbstractVerticle {
         vertx.createHttpServer().requestHandler(router::accept).listen(8082, http -> {
             if (http.succeeded()) {
                 startFuture.complete();
-                logger.info("HTTP server started on port 8080");
+                logger.info("HTTP server started on port 8082");
             } else {
                 startFuture.fail(http.cause());
             }

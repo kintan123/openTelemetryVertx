@@ -1,6 +1,10 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
+
+group = 'com.example'
+version = '1.0.0'
 
 repositories {
     mavenCentral()
@@ -20,6 +24,22 @@ dependencies {
     implementation 'com.zaxxer:HikariCP:4.0.3'
     implementation 'junit:junit:4.12'
     implementation 'org.mockito:mockito-all:1.10.19'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            // Optionally specify groupId, artifactId, and version if not already specified
+            groupId = 'com.example'
+            artifactId = 'supply-service'
+            version = '1.0.0'
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
 }
 
 tasks.withType(JavaCompile) {
